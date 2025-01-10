@@ -33,6 +33,8 @@ For a given set \( A \), a relation \( R \) from \( A \) to \( A \) is defined a
 - **Symmetric:** If \( x \) is related to \( y \), then \( y \) is related to \( x \).
 - **Antisymmetric:** If \( x \) is related to \( y \) and \( y \) is related to \( x \), then \( x = y \).
 - **Asymmetric:** If \( x \) is related to \( y \), then \( y \) is not related
+- **Transitive:** If \( x \) is related to \( y \) and \( y \) is related to \( z \), then \( x \) is related to \( z \).
+- **Connectedness:** Every pair of elements is related and no element is related to itself.
 
 ---
 

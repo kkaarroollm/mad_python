@@ -59,6 +59,33 @@ def is_antisymmetric(R) -> bool: # noqa
             return False
     return True
 
+def is_transitive(R, A) -> bool: # noqa
+    """
+    Check if a relation is transitive. A relation is transitive if,
+    for every (x, y) in the relation and (y, z) in the relation,
+    the pair (x, z) is also in the relation.
+    """
+    for x, y in R:
+        for z in A:
+            if (y, z) in R and (x, z) not in R:
+                return False
+    return True
+
+
+def is_connected(A, R) -> bool: # noqa
+    """
+    Determines if a relation is connected.
+    A relation is connected if, for every pair of distinct elements (x, y) in the set:
+    1. (x, y) is in the relation, or
+    2. (y, x) is in the relation.
+    3. Checks distinct elements, so (x, x) is not considered.
+    """
+    for x in A:
+        for y in A:
+            if x != y and (x, y) not in R and (y, x) not in R:
+                return False
+    return True
+
 
 print("Reflexive:", is_reflexive(A, B))  # False, because (1, 1), (2, 2), and (3, 3) are missing
 print("Irreflexive:", is_irreflexive(A, B)) # True, because (1, 1), (2, 2), and (3, 3) are missing
@@ -66,3 +93,6 @@ print("Non-reflexive:", is_non_reflexive(A, B)) # False, because e.g. (1, 1) is 
 print("Symmetric:", is_symmetric(B)) # False, because e.g. (3, 1) is missing, but (1, 3) is present
 print("Asymmetric:", is_asymmetric(B)) # False, because e.g. (1, 2) is missing, but (2, 1) is present
 print("Antisymmetric:", is_antisymmetric(B)) # True, because there is no (y, x) in R for every (x, y) in R
+print("Transitive:", is_transitive(B, A)) # False, because (1, 3) is missing, but (1, 2) and (2, 3) are present
+print("Connected:", is_connected(A, B)) # True, because for every pair of distinct elements (x, y), either (x, y) or (y, x) is in R
+
